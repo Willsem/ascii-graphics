@@ -3,10 +3,12 @@ cmake_minimum_required(VERSION 3.16)
 set(project ascii)
 
 set(include
+    include/command.h
 )
 
 set(source
     source/main.cc
+    source/command.cc
 )
 
 project(${project} VERSION 0.1 LANGUAGES CXX)
@@ -20,6 +22,6 @@ add_executable(${project}
     ${source}
 )
 
-#target_include_directories(${project}
-#    PUBLIC include
-#)
+target_include_directories(${project}
+    PUBLIC include
+)

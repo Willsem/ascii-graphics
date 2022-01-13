@@ -3,19 +3,18 @@
 #include <chrono>
 #include <thread>
 #include <cmath>
+#include "command.h"
 
-const int width = 182;
-const int height = 47;
+const int symbolWidth = 16;
+const int symbolHeight = 31;
 
-// const int width = 640;
-// const int height = 144;
+int main(int argc, char** argv) {
+    int width = atoi(exec("tput cols").c_str());
+    int height = atoi(exec("tput lines").c_str());
 
-const int symbolWidth = 14;
-const int symbolHeight = 35;
-
-int main() {
     char buffer[width * height];
     std::string gradient = " .:!r1/(l4Z9HW8$@";
+    gradient.reserve(gradient.size());
 
     unsigned long long frame = 0;
     while (true) {
@@ -38,7 +37,7 @@ int main() {
         }
 
         std::cout << buffer;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
         frame++;
     }
 
